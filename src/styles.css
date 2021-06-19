@@ -1,13 +1,13 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-h1 {
-  color: #5D8AA8;
+.col {
+  background-color: #5d8aa8;
 }
 
-h4 {
-  text-decoration: underline #5D8AA8;
-}
-
-header {
-  padding: 5px 0px;
+footer .navbar .col {
+  max-height: 100px;
+  max-width: 100px;
+  height: 70px;
+  width: 70px;
+  margin: 5px;
 }
