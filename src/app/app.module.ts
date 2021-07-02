@@ -8,8 +8,6 @@ import { PersonalInfoComponent } from './home/personal-info/personal-info.compon
 import { TeamInfoComponent } from './home/team-info/team-info.component';
 import { StatsComponent } from './home/stats/stats.component';
 import { AddComponent } from './home/add/add.component';
-import { UploadComponent } from './home/upload/upload.component';
-import { DownloadComponent } from './home/download/download.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,8 +15,6 @@ const appRoutes: Routes = [
   { path: 'team-memebrs', component: TeamInfoComponent },
   { path: 'team-stats', component: StatsComponent },
   { path: 'add', component: AddComponent },
-  { path: 'upload', component: UploadComponent },
-  { path: 'download', component: DownloadComponent },
 ];
 
 @NgModule({
@@ -29,8 +25,6 @@ const appRoutes: Routes = [
     TeamInfoComponent,
     StatsComponent,
     AddComponent,
-    UploadComponent,
-    DownloadComponent,
   ],
   imports: [
     BrowserModule,
