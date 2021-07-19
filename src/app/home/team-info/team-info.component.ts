@@ -12,6 +12,8 @@ export class TeamInfoComponent implements OnInit {
     this.oodQuals();
   }
 
+  teamMemInfo: any;
+  teamMemName: any;
   teamQualInfo = [
     [
       'M. Trafford',
@@ -69,7 +71,11 @@ export class TeamInfoComponent implements OnInit {
     this.teamQualInfo.splice(i, 1);
   }
 
-  viewInfo(i: any) {}
+  viewInfo(i: any) {
+    this.teamMemInfo = this.teamQualInfo[i];
+    this.teamMemName = this.teamMemInfo[0];
+    this.teamMemInfo.splice(0, 2);
+  }
 
   addItem() {
     var inputName = prompt('Name:');

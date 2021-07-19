@@ -8,6 +8,7 @@ import { PersonalInfoComponent } from './home/personal-info/personal-info.compon
 import { TeamInfoComponent } from './home/team-info/team-info.component';
 import { StatsComponent } from './home/stats/stats.component';
 import { AddComponent } from './home/add/add.component';
+import { QualInfoComponent } from './home/team-info/qual-info/qual-info.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,8 @@ const appRoutes: Routes = [
   { path: 'team-memebrs', component: TeamInfoComponent },
   { path: 'team-stats', component: StatsComponent },
   { path: 'add', component: AddComponent },
+  { path: 'qual-info', component: QualInfoComponent },
+
 ];
 
 @NgModule({
@@ -25,6 +28,7 @@ const appRoutes: Routes = [
     TeamInfoComponent,
     StatsComponent,
     AddComponent,
+    QualInfoComponent,
   ],
   imports: [
     BrowserModule,
