@@ -3,33 +3,62 @@
     <div class="row d-flex text-center">
       <h2>All Team Info</h2>
     </div>
+    <div class="row d-flex list-group-item overflow-auto">
+      <ul id="list" class="list-group list-group-flush">
+        <div *ngFor="let teamMember of teamQualInfo; let i = index">
+          <li
+            class="list-group-item list-group-item-action"
+            #selected
+            (click)="
+              deleteimg.classList.toggle('d-none');
+              viewimg.classList.toggle('d-none');
+              selected.classList.toggle('active')
+            "
+          >
+            <div class="row">
+              <div class="col-8"><small>Name: </small>{{ teamMember[0] }}</div>
+              <div class="col-4"><small>OOD: </small>{{ teamMember[1] }}</div>
+              <div class="row">
+                <div class="col-6">
+                  <img
+                    #deleteimg
+                    class="img-fluid d-none"
+                    style="float: right"
+                    (click)="removeItem(i)"
+                    src="./assets/images/delete.png"
+                    alt="Bulk Upload"
+                  />
+                </div>
+                <div class="col-6">
+                  <img
+                    #viewimg
+                    class="img-fluid d-none"
+                    style="float: left"
+                    (click)="viewInfo(i)"
+                    src="./assets/images/edit.png"
+                    alt="View Info"
+                  />
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
   </div>
 </body>
 <footer>
   <nav class="navbar fixed-bottom justify-content-center">
     <div class="container-fluid justify-content-center">
       <div class="row d-flex text-center">
-        <div class="col" style="background: white"></div>
-        <div class="col remove">
-          <img
-            class="img-fluid"
-            src="./assets/images/delete.png"
-            alt="Bulk Upload"
-          /><p>Delete</p>
-        </div>
-        <div class="col edit">
-          <img
-            class="img-fluid"
-            src="./assets/images/edit.png"
-            alt="Bulk Upload"
-          /><p>Edit</p>
+        <div class="col" style="opacity: 0"></div>
+        <div class="col" style="opacity: 0"></div>
+        <div class="col" (click)="addItem()">
+          <img class="img-fluid" src="./assets/images/edit.png" alt="Add" />
+          <p>Add</p>
         </div>
         <div class="col" routerLink="/">
-          <img
-            class="img-fluid"
-            src="./assets/images/back.png"
-            alt="Bulk Upload"
-          />
+          <img class="img-fluid" src="./assets/images/back.png" alt="Back" />
           <p>Back</p>
         </div>
       </div>
