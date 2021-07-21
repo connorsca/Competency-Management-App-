@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../data.service';
 
 @Component({
   selector: 'app-qual-info',
@@ -6,20 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qual-info.component.css'],
 })
 export class QualInfoComponent implements OnInit {
-  constructor() {}
+  constructor(private data: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getSelectedTeamInfo();
+  }
 
-  userQualInfo = [
-    { qual: 'Human Factors', exp: '01/02/2021' },
-    { qual: 'DIMP', exp: '01/05/2021' },
-    { qual: 'Manual Handling', exp: '01/05/2023' },
-    { qual: 'Noise Awareness', exp: '01/07/2022' },
-    { qual: 'Dangerous Substances', exp: '01/05/2025' },
-  ];
+  selectedTeamMem: any;
+  name = ""
+
+
+  getSelectedTeamInfo() {
+    this.selectedTeamMem = this.data.getSelectedQualInfo();
+    this.name = this.selectedTeamMem[0];
+  }
 
   removeItem(i: any) {
-    this.userQualInfo.splice(i, 1);
+    this.data.removeTeamMemQual(i+2)
   }
 
   addItem() {
@@ -37,8 +41,8 @@ export class QualInfoComponent implements OnInit {
             '\nwith the Expiary: ' +
             inputExp +
             '\nadded.'
-        );
-        this.userQualInfo.push({ qual: inputQual, exp: inputExp });
+        )
+        this.data.addTeamMemQual(inputQual, inputExp);
       }
     }
   }

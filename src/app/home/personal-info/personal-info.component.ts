@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -6,20 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-info.component.css'],
 })
 export class PersonalInfoComponent implements OnInit {
-  constructor() {}
+  constructor(private data: DataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserQualInfo();
+  }
 
-  userQualInfo = [
-    { qual: 'Human Factors', exp: '01/02/2021' },
-    { qual: 'DIMP', exp: '01/05/2021' },
-    { qual: 'Manual Handling', exp: '01/05/2023' },
-    { qual: 'Noise Awareness', exp: '01/07/2022' },
-    { qual: 'Dangerous Substances', exp: '01/05/2025' },
-  ];
+  userQualInfo: any;
+  title = '';
+
+  getUserQualInfo() {
+    this.userQualInfo = this.data.getUserQualInfo();
+    this.title = this.userQualInfo[0];
+  }
 
   removeItem(i: any) {
-    this.userQualInfo.splice(i, 1);
+    this.userQualInfo = this.data.removeUserQual(i+2);
   }
 
   addItem() {
@@ -38,7 +41,7 @@ export class PersonalInfoComponent implements OnInit {
             inputExp +
             '\nadded.'
         );
-        this.userQualInfo.push({ qual: inputQual, exp: inputExp });
+        this.userQualInfo = this.data.addUserQual(inputQual, inputExp);
       }
     }
   }

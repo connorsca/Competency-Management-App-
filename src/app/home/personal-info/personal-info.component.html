@@ -1,11 +1,11 @@
 <body>
   <div class="container-fluid justify-content-center">
     <div class="row d-flex text-center">
-      <h2>Personal Information</h2>
+      <h2>{{title}}</h2>
     </div>
     <div class="row d-flex list-group-item overflow-auto">
       <ul id="list" class="list-group list-group-flush">
-        <div *ngFor="let qualItem of userQualInfo; let i = index">
+        <div *ngFor="let qualItem of userQualInfo.slice(2); let i = index">
           <li
             class="list-group-item list-group-item-action"
             #selected
