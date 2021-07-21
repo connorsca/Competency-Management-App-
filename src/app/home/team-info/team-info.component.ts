@@ -33,22 +33,8 @@ export class TeamInfoComponent implements OnInit {
     if (inputName === '' || inputName === null) {
       return;
     } else {
-      var inputQual = prompt('Qualification Title:');
-      if (inputQual === '' || inputQual === null) {
-        return;
-      } else {
-        var inputExp = prompt('Qualification Expiary:');
-        if (inputExp === '' || inputExp === null) {
-          return;
-        } else {
-          this.teamQualInfo = this.data.addTeamMem(
-            inputName,
-            inputQual,
-            inputExp
-          );
-          alert('User: ' + inputName + ' added.');
-        }
-      }
+      this.teamQualInfo = this.data.addTeamMem(inputName);
+      alert('User: ' + inputName + ' added.');
     }
     this.data.oodTeamQuals();
   }

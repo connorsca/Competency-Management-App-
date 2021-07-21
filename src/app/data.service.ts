@@ -75,8 +75,8 @@ export class DataService {
     return this.teamQualInfo;
   }
 
-  addTeamMem(inputName: string, inputQual: string, inputExp: string) {
-    this.teamQualInfo.push([inputName, { qual: inputQual, exp: inputExp }]);
+  addTeamMem(inputName: string) {
+    this.teamQualInfo.push([inputName]);
     return this.teamQualInfo;
   }
 
@@ -110,7 +110,7 @@ export class DataService {
     this.teamMemInfo = teamInfo;
   }
 
-  // Team qualification page mwthods
+  // Team qualification page methods
   getSelectedQualInfo() {
     return this.teamMemInfo;
   }
@@ -121,7 +121,23 @@ export class DataService {
   }
 
   addTeamMemQual(inputQual: string, inputExp: string) {
-    this.teamMemInfo.push([{ qual: inputQual, exp: inputExp }]);
+    this.teamMemInfo.push({ qual: inputQual, exp: inputExp });
     return this.teamMemInfo;
+  }
+
+  // Add team member function
+  addNewTeamMem() {
+    var inputName = prompt('Name:');
+    if (inputName === '' || inputName === null) {
+      return;
+    } else {
+      this.addTeamMem(inputName);
+      alert('User: ' + inputName + ' added.');
+    }
+  }
+
+  setupNewTeamMem() {
+    var i = this.teamQualInfo.length;
+    this.setSelectedQualInfo(this.teamQualInfo[i - 1]);
   }
 }
